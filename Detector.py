@@ -2,6 +2,10 @@ from .LMTAtmosphere import LMTAtmosphere
 from matplotlib import pyplot as plt
 import scipy.constants as sc
 import numpy as np
+from pathlib import Path
+
+datapath = Path(__file__).parent
+
 
 class Detector:
   
@@ -58,7 +62,7 @@ class Detector:
         #telescope and atmosphere
         self.telAtm = LMTAtmosphere(elevation=self.elevation, \
                                      quartile=self.atmQuartile, \
-                                     path='/home/toltec/toltec_astro/tolteca/tolteca/web/templates/common/toltec_sensitivity/')
+                                     path=datapath)
         self.telEfficiency = self.primaryOpticalEfficiency()
 
         #RJ temperatures and system efficiency
@@ -77,8 +81,7 @@ class Detector:
     #with TolTEC itself.  Note that for some reason the fmin and fmax
     #values given here do not match the actual cutoff of the passbands.
     def getPassband(self, passbandFile='model_passbands.npz'):
-        passbandFile = '/home/toltec/toltec_astro/tolteca/tolteca/web/templates/common/toltec_sensitivity/model_passbands.npz'
-        tmp = np.load(passbandFile)
+        tmp = np.load(datapath.joinpath(passbandFile))
         self.f_GHz = tmp['f_GHz'][:50000]
         if (self.band==1.1):
             self.passband = tmp['band_280'][:50000]+1.0e-10

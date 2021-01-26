@@ -18,11 +18,11 @@ class LMTAtmosphere:
 
         #atmosphere quartile
         if(quartile==50):
-            npzFile=path+'amLMT50.npz'
+            npzFile=path.joinpath('amLMT50.npz')
         elif(quartile==25):
-            npzFile=path+'amLMT25.npz'
+            npzFile=path.joinpath('amLMT25.npz')
         elif(quartile==75):
-            npzFile=path+'amLMT75.npz'
+            npzFile=path.joinpath('amLMT75.npz')
         else:
             raise ValueError('Only quartiles 25, 50 and 75 are supported.')
 
