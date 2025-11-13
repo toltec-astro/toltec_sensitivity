@@ -1,3 +1,6 @@
+This repository now lives entirely within the newer toltec_beammap repository.  This version is archived.
+
+
 TolTEC sensitivity model.
 
 To use this model, create the appropriate Detector object.
